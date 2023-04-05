@@ -16,10 +16,12 @@ import com.natasya.adv160420053week4.model.Student
 //class ListViewModel:ViewModel() {
 class ListViewModel(application: Application):AndroidViewModel(application) {
     val studentsLD = MutableLiveData<ArrayList<Student>>()
+    val studentsLD2 = MutableLiveData<Student>()
     val studentLoadErrorLD = MutableLiveData<Boolean>()
     val loadingLD = MutableLiveData<Boolean>()
     val TAG = "volleyTag"
     private var queue:RequestQueue? = null
+    private var queue2:RequestQueue? = null
     fun refresh(){
         /*
         val student1 =
@@ -54,6 +56,28 @@ class ListViewModel(application: Application):AndroidViewModel(application) {
         )
         stringRequest.tag = TAG
         queue?.add(stringRequest)
+    }
+
+    fun refresh(id: String){
+        loadingLD.value = true
+        studentLoadErrorLD.value = false
+        queue2 = Volley.newRequestQueue(getApplication())
+        val url = "http://adv.jitusolution.com/student.php?id=$id"
+        val stringRequest = StringRequest(
+            Request.Method.GET, url, {
+                val result = Gson().fromJson<Student>(it, Student::class.java)
+                studentsLD2.value = result
+                loadingLD.value = false
+                Log.e("showvoley2", result.toString())
+            },
+            {
+                Log.e("showvoley2", it.toString())
+                studentLoadErrorLD.value = false
+                loadingLD.value = false
+            }
+        )
+        stringRequest.tag = TAG
+        queue2?.add(stringRequest)
     }
 
     override fun onCleared() {

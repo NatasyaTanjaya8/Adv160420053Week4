@@ -10,6 +10,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.natasya.adv160420053week4.R
 import com.natasya.adv160420053week4.viewmodel.ListViewModel
+import kotlinx.android.synthetic.main.fragment_student_detail.*
 import kotlinx.android.synthetic.main.fragment_student_list.*
 
 class StudentListFragment : Fragment() {

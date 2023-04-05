@@ -8,8 +8,10 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.get
 import com.natasya.adv160420053week4.R
 import com.natasya.adv160420053week4.model.Student
+import com.natasya.adv160420053week4.util.loadImage
 import com.natasya.adv160420053week4.viewmodel.DetailViewModel
 import com.natasya.adv160420053week4.viewmodel.ListViewModel
 import kotlinx.android.synthetic.main.fragment_student_detail.*
@@ -20,6 +22,7 @@ class StudentDetailFragment : Fragment() {
     var studentName = ""
     var bod = ""
     var phone = ""
+    var photoUrl = ""
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -36,6 +39,7 @@ class StudentDetailFragment : Fragment() {
             studentName = StudentDetailFragmentArgs.fromBundle(requireArguments()).studentName
             bod = StudentDetailFragmentArgs.fromBundle(requireArguments()).bod
             phone = StudentDetailFragmentArgs.fromBundle(requireArguments()).phone
+            photoUrl = StudentDetailFragmentArgs.fromBundle(requireArguments()).photoUrl
             /*
             textID.setText(id)
             textName.setText(studentName)
@@ -44,7 +48,7 @@ class StudentDetailFragment : Fragment() {
             */
         }
         viewModel = ViewModelProvider(this).get(DetailViewModel::class.java)
-        viewModel.fetch(id, studentName, bod, phone)
+        viewModel.fetch(id, studentName, bod, phone, photoUrl)
         observeViewModel()
     }
 
@@ -54,6 +58,7 @@ class StudentDetailFragment : Fragment() {
             textName.setText(it.name)
             textBod.setText(it.bod)
             textPhone.setText(it.phone)
+            imageView2.loadImage(it.photoUrl, progressBar2)
         })
     }
 }

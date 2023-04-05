@@ -13,9 +13,9 @@ class DetailViewModel:ViewModel() {
         studentLD.value = student1
     }
     */
-    fun fetch(id: String, studentName: String, bod: String, phone: String) {
+    fun fetch(id: String, studentName: String, bod: String, phone: String, photoUrl: String) {
         val student1 = Student(id,studentName,bod,phone,
-            "http://dummyimage.com/75x100.jpg/cc0000/ffffff")
+            photoUrl)
         studentLD.value = student1
     }
 }

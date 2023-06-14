@@ -36,10 +36,10 @@ class StudentDetailFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         if(arguments != null){
             id = StudentDetailFragmentArgs.fromBundle(requireArguments()).id
-            studentName = StudentDetailFragmentArgs.fromBundle(requireArguments()).studentName
-            bod = StudentDetailFragmentArgs.fromBundle(requireArguments()).bod
-            phone = StudentDetailFragmentArgs.fromBundle(requireArguments()).phone
-            photoUrl = StudentDetailFragmentArgs.fromBundle(requireArguments()).photoUrl
+            //studentName = StudentDetailFragmentArgs.fromBundle(requireArguments()).studentName
+            //bod = StudentDetailFragmentArgs.fromBundle(requireArguments()).bod
+            //phone = StudentDetailFragmentArgs.fromBundle(requireArguments()).phone
+            //photoUrl = StudentDetailFragmentArgs.fromBundle(requireArguments()).photoUrl
             /*
             textID.setText(id)
             textName.setText(studentName)
@@ -48,7 +48,7 @@ class StudentDetailFragment : Fragment() {
             */
         }
         viewModel = ViewModelProvider(this).get(DetailViewModel::class.java)
-        viewModel.fetch(id, studentName, bod, phone, photoUrl)
+        viewModel.fetch(id)
         observeViewModel()
     }
 

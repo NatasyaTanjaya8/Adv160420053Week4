@@ -10,6 +10,7 @@ import android.widget.ImageView
 import android.widget.ProgressBar
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
+import androidx.databinding.BindingAdapter
 import com.natasya.adv160420053week4.R
 import com.natasya.adv160420053week4.view.MainActivity
 import com.squareup.picasso.Callback
@@ -49,4 +50,8 @@ fun createNotificationChannel(context: Context, importance:Int, showBadge:Boolea
         val manager = context.getSystemService(NotificationManager::class.java)
         manager.createNotificationChannel(channel)
     }
+}
+@BindingAdapter("android:imageUrl", "android:progressBar")
+fun loadPhotoURL(view:ImageView, url:String, pb:ProgressBar){
+    view.loadImage(url, pb)
 }

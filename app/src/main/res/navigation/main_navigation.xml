@@ -22,17 +22,5 @@
         <argument
             android:name="id"
             app:argType="string" />
-        <argument
-            android:name="studentName"
-            app:argType="string" />
-        <argument
-            android:name="bod"
-            app:argType="string" />
-        <argument
-            android:name="phone"
-            app:argType="string" />
-        <argument
-            android:name="photoUrl"
-            app:argType="string" />
     </fragment>
 </navigation>
